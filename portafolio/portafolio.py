@@ -2,6 +2,7 @@
 from .components.header import header
 from .components.body import body
 from .components.footer import footer
+from .components.navbar import navbar
 import reflex as rx
 
 from rxconfig import config
@@ -14,7 +15,7 @@ from rxconfig import config
 def index() -> rx.Component:
     # Welcome Page (Index)
     return rx.container(
-        rx.color_mode.button(position='top-right'),
+        navbar(),
         
 
         header(),
