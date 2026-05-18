@@ -7,20 +7,20 @@ import reflex as rx
 from rxconfig import config
 
 
-class State(rx.State):
-    """The app state."""
+# class State(rx.State):
+#     """The app state."""
 
 
 def index() -> rx.Component:
     # Welcome Page (Index)
-    return rx.box(
-        rx.text('PRUEB'),
+    return rx.container(
+        rx.color_mode.button(position='top-right'),
+        
+
         header(),
         body(),
         footer(),
-        align='center',
-        width='100%',
-        border='2px solid white'
+        
         
     )
 
