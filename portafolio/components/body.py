@@ -148,9 +148,56 @@ def body() -> rx.Component:
             spacing='2'  
 
             ),
-        
+            rx.heading(
+                'Proyectos...',
+                margin='60px 0px 20px 0px',
+                
+
+            ),
+            rx.heading(
+                ' - appNotes',
+                size='4',
+                margin='0px 20px 5px 20px',
+            
+            ),
+            rx.hstack(
+                rx.text(
+                    '''Proyecto de prueba realizado en el camino de aprendizaje de Reflex de Python, 
+                    proyecto pensado para llevar un registro de notas almacenadas con fecha, 
+                    permite la insercion de nuevas notas, eliminacion y asignacion de un nivel de prioridad en identificadas por color.
+                    Este se desplego en produccion en Railway y se lleva control de versiones en GitHUB, las notas son guardadas en una base
+                    de datos PostgreSQL, en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
+                    width='500px',
+                    height='auto'
+                ),
+                rx.image(
+                    src='asd',
+                    height='200px'
+                )
+            ),
+            rx.heading(
+                ' - appNotes',
+                size='4',
+                margin='10px 20px 5px 20px',
+            
+            ),
+            rx.hstack(
+                rx.text(
+                    '''Proyecto de prueba realizado en el camino de aprendizaje de Reflex de Python, 
+                    proyecto pensado para llevar un registro de notas almacenadas con fecha, 
+                    permite la insercion de nuevas notas, eliminacion y asignacion de un nivel de prioridad en identificadas por color.
+                    Este se desplego en produccion en Railway y se lleva control de versiones en GitHUB, las notas son guardadas en una base
+                    de datos PostgreSQL, en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
+                    width='500px',
+                    height='auto'
+                ),
+                rx.image(
+                    src='asd',
+                    height='200px'
+                )
+            ),
         margin='4px',
-        height='700px',
+        height='auto',
         border_radius='10px',
 
         ),
