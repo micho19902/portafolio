@@ -32,5 +32,7 @@ def index() -> rx.Component:
 
 
 
-app = rx.App(stylesheets=['./style/styles.css'])
+app = rx.App(stylesheets=['./style/styles.css'],
+            #  style={breakpoint: ["520px", "768px", "1024px", "1280px", "1640px"]}
+            )
 app.add_page(index, title='MicHDevops')
