@@ -1,5 +1,5 @@
 import reflex as rx
-
+from .dialogImage import dialogImage
 
 
 
@@ -170,10 +170,8 @@ def body() -> rx.Component:
                     width='500px',
                     height='auto'
                 ),
-                rx.image(
-                    src='asd',
-                    height='200px'
-                )
+                dialogImage('appnotes.png')
+                    
             ),
             rx.heading(
                 ' - appNotes',
