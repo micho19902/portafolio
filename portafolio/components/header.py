@@ -15,9 +15,11 @@ def header() -> rx.Component:
             rx.vstack(
                 rx.heading(
                     'Michel Guerrero Obrador',
-                    size='8'
+                            size=rx.breakpoints({'lg':'8', 'md':'5', 'xs':'3'})
+                    # size=rx.breakpoints(xl='8',lg='8')
                     
                 ),
+                rx.tablet_and_desktop(
                 rx.code_block(
                     '< DevOps Junior / Devs por Hobby >',
                     language="python",
@@ -25,6 +27,8 @@ def header() -> rx.Component:
                         light=rx.code_block.themes.one_light,
                         dark=rx.code_block.themes.one_dark,
                     ),
+                    
+                ),
                 ),
                 rx.hstack(
                         rx.icon(
@@ -36,15 +40,6 @@ def header() -> rx.Component:
                         )
                     ),
                 rx.hstack(
-                    
-                    # rx.link(
-                    #     rx.image(
-                    #         src='facebook.svg',
-                    #         height='40px',
-                            
-                    #     ),
-                    #     href=
-                    # ),
                     rx.link(
                         rx.image(
                             src='github-color-svgrepo-com.svg',
@@ -76,7 +71,8 @@ def header() -> rx.Component:
                             ),
                             variant='surface',
                             border_radius='20px',
-                            size='3'
+                            # size='3'
+                            size=rx.breakpoints({'lg':'3', 'md':'3', 'xs':'2'})
                         ),
                         href='mailto:micho.1990@gmail.com'
                     ),
@@ -90,7 +86,7 @@ def header() -> rx.Component:
         # border='2px solid white',
         # border_radius='10px',
         margin='4px',
-        height='auto|auto',
+        height=['auto','auto'],
         # bg="#4D4848",
-        width='auto|auto'
+        width=['auto','auto'],
     )

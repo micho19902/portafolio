@@ -1,5 +1,6 @@
 import reflex as rx
 from .dialogImage import dialogImage
+from .tecnolog import tecnolog
 
 
 
@@ -11,104 +12,23 @@ def body() -> rx.Component:
                 margin_bottom='20px'
             ),
             rx.grid(
-                rx.hstack(
-                    rx.image(
-                        src='docker-svgrepo-com.svg',
-                        height='40px'
-                    ),
-                    rx.text(
-                        'Docker'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#4351D4"
-                    
-                ),
-                rx.hstack(
-                    rx.image(
-                        src='oracle-svgrepo-com.svg',
-                        height='40px'
-                    ),
-                    rx.text(
-                        'Oracle'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#DC9797"
-                    
-                ),
-                rx.hstack(
-                    rx.image(
-                        src='linux-svgrepo-com.svg',
-                        height='40px'
-                    ),
-                    rx.text(
-                        'GNU/Linux'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#FCC624"
-                    
-                ),
-                rx.hstack(
-                    rx.image(
-                        src='python-svgrepo-com.svg',
-                        height='40px'
-                    ),
-                    rx.text(
-                        'Python'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#249BFC"
-                    
-                ),
-                rx.hstack(
-                    rx.image(
-                        src='reflex.jpg',
-                        height='40px',
-                        border_radius="20px"
-                    ),
-                    rx.text(
-                        'Reflex'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#BF00F4"
-                    
-                ),
-                rx.hstack(
-                    rx.image(
-                        src='github-color-svgrepo-com.svg',
-                        height='40px',
-                        border_radius="20px"
-                    ),
-                    rx.text(
-                        'GitHUB'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#009BF4"
-                    
-                ),
+                
+                tecnolog('docker-svgrepo-com.svg','Docker', '#4351D4'  ),
+                tecnolog('oracle-svgrepo-com.svg','Oracle', '#DC9797'  ),
+                tecnolog('linux-svgrepo-com.svg','GNU/Linux', '#FCC624'  ),
+                tecnolog('python-svgrepo-com.svg','Python', '#249BFC'  ),
+                tecnolog('reflex.jpg','Reflex', '#BF00F4'  ),
+                tecnolog('github-color-svgrepo-com.svg','GitHUB', '#009BF4'  ),
+                tecnolog('postgresql-svgrepo-com.svg','PostgreSQL', '#009BF4'  ),
+                
                 rx.hstack(
                     rx.color_mode_cond(
                         light=rx.image(
                             src='railway_black.png',
                             height='40px',
-                            border_radius="20px"
+                            border_radius="20px",
+                            color='black',
+                            
                     ),
                         dark=rx.image(
                             src='railway.png',
@@ -126,25 +46,11 @@ def body() -> rx.Component:
                     # bg="#FFFFFF"
                     
                 ),
-                rx.hstack(
-                    rx.image(
-                        src='postgresql-svgrepo-com.svg',
-                        height='40px',
-                        border_radius="20px"
-                    ),
-                    rx.text(
-                        'PostgreSQL'
-                    ),
-                    align='center',
-                    # border='2px solid white',
-                    border_radius='30px',
-                    padding='1px 10px',
-                    bg="#009BF4"
-                    
-                ),
+                
 
             justify='between',
-            columns='4',
+            # columns='4',
+            columns=rx.breakpoints(initial="2", sm="3", lg="4"),
             spacing='2'  
 
             ),
@@ -161,6 +67,7 @@ def body() -> rx.Component:
             
             ),
             rx.hstack(
+                
                 rx.text(
                     '''Proyecto de prueba realizado en el camino de aprendizaje de Reflex de Python, 
                     proyecto pensado para llevar un registro de notas almacenadas con fecha, 
@@ -170,6 +77,8 @@ def body() -> rx.Component:
                     width='500px',
                     height='auto'
                 ),
+                
+                
                 dialogImage('appnotes.png')
                     
             ),
@@ -189,10 +98,7 @@ def body() -> rx.Component:
                     width='500px',
                     height='auto'
                 ),
-                rx.image(
-                    src='asd',
-                    height='200px'
-                )
+                dialogImage('appnotes.png')
             ),
         margin='4px',
         height='auto',
