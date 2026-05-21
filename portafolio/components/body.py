@@ -73,7 +73,7 @@ def body() -> rx.Component:
                     proyecto pensado para llevar un registro de notas almacenadas con fecha, 
                     permite la insercion de nuevas notas, eliminacion y asignacion de un nivel de prioridad en identificadas por color.
                     Este se desplego en produccion en Railway y se lleva control de versiones en GitHUB, las notas son guardadas en una base
-                    de datos PostgreSQL, en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
+                    de datos PostgreSQL , en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
                     width='500px',
                     height='auto'
                 ),
