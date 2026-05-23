@@ -6,7 +6,8 @@ def tecnolog(src: str, text: str, color: str) -> rx.Component:
     return rx.hstack(
                     rx.image(
                         src=src,
-                        height='40px'
+                        height='40px',
+                        border_radius='20px'
                     ),
                     rx.text(
                         text

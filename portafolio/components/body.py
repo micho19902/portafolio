@@ -63,7 +63,8 @@ def body() -> rx.Component:
             rx.heading(
                 ' - appNotes',
                 size='4',
-                margin='0px 20px 5px 20px',
+                margin='20px',
+                # class_name='tecn_hoover'
             
             ),
             rx.hstack(
@@ -83,22 +84,21 @@ def body() -> rx.Component:
                     
             ),
             rx.heading(
-                ' - appNotes',
+                ' - hyprland desktop',
                 size='4',
-                margin='10px 20px 5px 20px',
+                margin='20px',
             
             ),
             rx.hstack(
                 rx.text(
-                    '''Proyecto de prueba realizado en el camino de aprendizaje de Reflex de Python, 
-                    proyecto pensado para llevar un registro de notas almacenadas con fecha, 
-                    permite la insercion de nuevas notas, eliminacion y asignacion de un nivel de prioridad en identificadas por color.
-                    Este se desplego en produccion en Railway y se lleva control de versiones en GitHUB, las notas son guardadas en una base
-                    de datos PostgreSQL, en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
+                    '''Proyecto de escritorio basado en Hyprland, con una configuración minimalista y eficiente en GNU/Linux, 
+                    orientado a productividad. Ambiente personalizable con atajos de teclado, gestión de ventanas en mosaico, 
+                    transparencias sutiles y esquemas de color coherentes. Incluye paneles ligeros, indicadores de sistema, 
+                    docks ocultos y una experiencia fluida para desarrollo, navegación y multimedia, manteniendo el sistema rápido y estable.''',
                     width='500px',
                     height='auto'
                 ),
-                dialogImage('appnotes.png')
+                dialogImage('hypr-desktop.png')
             ),
         margin='4px',
         height='auto',
