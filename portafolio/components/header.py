@@ -5,7 +5,7 @@ def header() -> rx.Component:
     return rx.box(
         rx.hstack(
             rx.avatar(
-                src='https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-1/277170269_2734413586704647_6200820579857454140_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=iqaNc98OSqUQ7kNvwFOXS5c&_nc_oc=AdoxrO9P2r0MIcrfWyfwkzmi8Npf6JGde-535wMA_kXL9wS8PhkhtHXClC7nmmt3Cks&_nc_zt=24&_nc_ht=scontent-mia3-2.xx&_nc_gid=HFWjEEH38K1AF0ulbJcWdQ&_nc_ss=7b2a8&oh=00_Af5GSaTuf8PF-yAU9P_ugsLjJv3At5ZCID0d0_MhGufWmQ&oe=6A11A792',
+                src='https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/277170269_2734413586704647_6200820579857454140_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=y9pmdtozLnUQ7kNvwHt5Q74&_nc_oc=Ado3hREYP_aSzypiFHhSYzHEEehgjrTjYxoLGgnXQlRAiw7OT-oh7cxwW32AhEzQYKQ&_nc_zt=23&_nc_ht=scontent-mia3-2.xx&_nc_gid=mMjioq-FhNs9aGvRsPZDRQ&_nc_ss=7b2a8&oh=00_Af4rKClUnPr3EZHosLQ91Rs0d4TjDJ2s6RNSO33T7r-whw&oe=6A17FB94',
                 size='9',
                 radius='full',
                 # border='2px solid red',
@@ -72,9 +72,12 @@ def header() -> rx.Component:
                             variant='surface',
                             border_radius='20px',
                             # size='3'
-                            size=rx.breakpoints({'lg':'3', 'md':'3', 'xs':'2'})
+                            size=rx.breakpoints({'lg':'3', 'md':'3', 'xs':'2'}),
+                            class_name='mail_to'
+                            
                         ),
-                        href='mailto:micho.1990@gmail.com'
+                        href='mailto:micho.1990@gmail.com',
+                        
                     ),
                     spacing='3'
                 ),

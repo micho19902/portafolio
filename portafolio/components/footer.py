@@ -5,12 +5,19 @@ import reflex as rx
 
 def footer() -> rx.Component:
 
-    return rx.container(
-        rx.heading(
-            'Footer'
+    return rx.box(
+        rx.vstack(
+            rx.text(
+            '< Micho /', rx.text.strong(' DEVOPS ', color="#0558be"), '>'
+            
+            
         ),
-        border='2px solid white',
-        margin='4px',
-        height='100px',
-        border_radius='10px',
+
+            align='center',
+            justify='center',
+            bg='#292825',
+            border_radius='10px',
+            height='40px'
+        ),
+       
     )

@@ -1,7 +1,3 @@
-.tecn_hoover {
-    background-color: #1a1a1a;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.mail_to:hover {
+    background-color: aliceblue;
 }
