@@ -16,6 +16,7 @@ def tecnolog(src: str, text: str, color: str) -> rx.Component:
                     # border='2px solid white',
                     border_radius='30px',
                     padding='1px 10px',
-                    bg=color
+                    bg=color,
+                    color='auto'
                     
                 ),

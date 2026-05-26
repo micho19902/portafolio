@@ -79,7 +79,28 @@ def header() -> rx.Component:
                         href='mailto:micho.1990@gmail.com',
                         
                     ),
-                    spacing='3'
+                     rx.link(
+                        rx.button(
+                            rx.hstack(
+                            rx.icon(
+                                'mail'
+                            ),
+                            rx.text(
+                                'Solicitar CV'
+                            )
+                            ),
+                            variant='surface',
+                            border_radius='20px',
+                            # size='3'
+                            size=rx.breakpoints({'lg':'3', 'md':'3', 'xs':'2'}),
+                            class_name='mail_to',
+                            on_click=rx.redirect('/CV Michel Guerrero Obrador.pdf', is_external=True)
+                            
+                        ),
+                        
+                    ),
+                    spacing='3',
+                    align='center'
                 ),
                 spacing='1',
                 padding='5px'
