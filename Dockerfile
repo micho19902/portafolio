@@ -1,50 +1,55 @@
-FROM python:3.14.4
+# This Dockerfile is used to deploy a single-container Reflex app instance
+# to services like Render, Railway, Heroku, GCP, and others.
+
+# It uses a reverse proxy (Caddy) to serve the frontend statically and proxy to backend
+# from a single exposed port.
+FROM python:3.12
+
+# Render espera el puerto 10000, pero lo toma de la variable de entorno $PORT
+ARG PORT=8080
+ARG API_URL
+ENV PORT=$PORT API_URL=${API_URL:-http://localhost:$PORT}
+
+# Instalar Caddy server (reverse proxy) dentro de la imagen
+RUN apt-get update -y && apt-get install -y caddy && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# ARG NODE_VERSION=20.x
-# ARG DATABASE_URL
+# Crear archivo de configuración de Caddy para que sirva como proxy inverso
+RUN cat > Caddyfile <<EOF
+:{\$PORT}
 
-# # Instala Node.js (necesario para el frontend de Reflex)
-# RUN apt-get update && apt-get install -y \
-#     curl \
-#     gnupg \
-#     unzip \
-#     procps \
-#     && curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
-#     && apt-get install -y nodejs \
-#     && apt-get clean \
-#     && rm -rf /var/lib/apt/lists/*
+encode gzip
 
-# # Crea un usuario no root para seguridad
-# RUN adduser --disabled-password --home /app reflex
-# RUN python -m venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
+@backend_routes path /_event/* /ping /_upload /_upload/*
+handle @backend_routes {
+	reverse_proxy localhost:8000
+}
 
-# Copia y da permisos
-COPY  . /app
-# RUN chown -R reflex:reflex /app
-# USER reflex
+root * /srv
+route {
+	try_files {path} {path}/ /404.html
+	file_server
+}
+EOF
 
-# Instala dependencias e inicializa Reflex
-RUN pip install --no-cache-dir -r requirements.txt
-# RUN reflex db init
-# RUN reflex db makemigrations
-# RUN reflex db migrate
+# Copiar todo el código al contenedor
+COPY . .
+
+# Instalar dependencias de Python
+RUN pip install -r requirements.txt
+
+# Inicializar Reflex y preparar la app
 RUN reflex init
 
-# Variables de entorno y puertos
-# ENV DATABASE_URL=${DATABASE_URL}
-ENV REFLEX_PORT=8000
-ENV PORT=3000
-EXPOSE 3000
-EXPOSE 8000
+# Exportar el frontend como archivos estáticos y moverlos a /srv
+RUN reflex export --frontend-only --no-zip && mv .web/_static/* /srv/ && rm -rf .web
 
-# Healthcheck para que Railway sepa que tu app está viva
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:8000/api/health || exit 1
-
+# Necesario hasta que Reflex maneje correctamente SIGTERM
 STOPSIGNAL SIGKILL
 
-# ¡El comando final!
-CMD ["reflex", "run", "--env", "prod"]
+EXPOSE $PORT
+
+# Comando para iniciar la aplicación
+CMD [ -d alembic ] && reflex db migrate; \
+    caddy start && reflex run --env prod --backend-only --loglevel debug
