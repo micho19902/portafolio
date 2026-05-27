@@ -1,6 +1,7 @@
 import reflex as rx
 from .dialogImage import dialogImage
 from .tecnolog import tecnolog
+from .cardCertif import cardCertf
 
 
 
@@ -108,91 +109,10 @@ def body() -> rx.Component:
                 'Certificados',
                 margin='60px 0px 20px 0px',
             ),
-            
-                rx.hstack(
-                    rx.heading(
-                        '- Linux Essentials LPI',
-                        size='4',
-                        margin_left='20px',
-                        width='200px'
-                    ),
-                    rx.button(
-                        '[PDF]',
-                        on_click=rx.download(url='/LE.pdf')
-                    ),
-                    rx.link(
-                        rx.button(
-                            'Insignia'
-                        ),
-                        href='https://www.credly.com/badges/08ba86dc-34fa-437d-a18c-c406a9c0a5a9',
-                        is_external=True
-                    ),
-                    
-                    justify='between',
-                    align='center',
-                    bg="#e3e2e158",
-                    color='auto',
-                    padding='2px',
-                    border_radius='5px',
-                    margin_bottom='5px'
-                    
-                ),
-                rx.hstack(
-                    rx.heading(
-                        '- SQL Interactivo',
-                        size='4',
-                        margin_left='20px',
-                        width='200px'
-                    ),
-                    rx.button(
-                        '[PDF]',
-                        on_click=rx.download(url='/assets/29156_05092024.png')
-                    ),
-                    rx.link(
-                        rx.button(
-                            'Insignia'
-                        ),
-                        href='https://tutorialesinteractivos.com/certificados/8f84033e-ac26-4469-ba6f-1242da8d3242',
-                        is_external=True
-                    ),
-                    
-                    justify='between',
-                    align='center',
-                    bg="#e3e2e158",
-                    color='auto',
-                    padding='2px',
-                    border_radius='5px',
-                    margin_bottom='5px'
-                    
-                ),
-                rx.hstack(
-                    rx.heading(
-                        '- Python Interactivo',
-                        size='4',
-                        margin_left='20px',
-                        width='200px'
-                    ),
-                    rx.button(
-                        '[PDF]',
-                        on_click=rx.download(url='/34812_15102024.png')
-                    ),
-                    rx.link(
-                        rx.button(
-                            'Insignia'
-                        ),
-                        href='https://tutorialesinteractivos.com/certificados/8f84033e-ac26-4469-ba6f-1242da8d3242',
-                        is_external=True
-                    ),
-                    
-                    justify='between',
-                    align='center',
-                    bg="#e3e2e158",
-                    color='auto',
-                    padding='2px',
-                    border_radius='5px',
-                    margin_bottom='5px'
-                    
-                ),
+            cardCertf('- Linux Essentials LPI', 'LE.pdf', 'https://www.credly.com/badges/08ba86dc-34fa-437d-a18c-c406a9c0a5a9'),
+            cardCertf('- SQL Interactivo', '29156_05092024.png', 'https://tutorialesinteractivos.com/certificados/8f84033e-ac26-4469-ba6f-1242da8d3242'),
+            cardCertf('- Python Interactivo', '34812_15102024.png', 'https://tutorialesinteractivos.com/certificados/8f84033e-ac26-4469-ba6f-1242da8d3242'),
+                
         
         margin='4px',
         height='auto',
