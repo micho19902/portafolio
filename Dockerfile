@@ -47,4 +47,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 STOPSIGNAL SIGKILL
 
 # ¡El comando final!
-CMD ["reflex", "run", "--env", "prod"]
+CMD ["reflex", "run", "--env", "prod", "--port", "10000"]
