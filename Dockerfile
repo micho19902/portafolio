@@ -1,53 +1,50 @@
-# Usa una imagen oficial de Python
-FROM python:3.12
-
-# --- Configuración para Render ---
-# Render asigna el puerto a través de esta variable de entorno
-ARG PORT=10000
-# Necesitamos construir la app con la URL de tu futuro despliegue
-ARG API_URL=https://portafolio.onrender.com
-ENV PORT=$PORT API_URL=$API_URL
-
-# Instala el servidor web Caddy para servir el frontend
-RUN apt-get update -y && apt-get install -y caddy && rm -rf /var/lib/apt/lists/*
+FROM python:3.14.4
 
 WORKDIR /app
 
-# Crea un archivo de configuración para Caddy
-# Este actúa como un "proxy inverso" para dirigir el tráfico
-RUN cat > Caddyfile <<EOF
-:{\$PORT}
+# ARG NODE_VERSION=20.x
+# ARG DATABASE_URL
 
-encode gzip
+# # Instala Node.js (necesario para el frontend de Reflex)
+# RUN apt-get update && apt-get install -y \
+#     curl \
+#     gnupg \
+#     unzip \
+#     procps \
+#     && curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
+#     && apt-get install -y nodejs \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/*
 
-@backend_routes path /_event/* /ping /_upload /_upload/*
-handle @backend_routes {
-        reverse_proxy localhost:8000
-}
+# # Crea un usuario no root para seguridad
+# RUN adduser --disabled-password --home /app reflex
+# RUN python -m venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH"
 
-root * /srv
-route {
-        try_files {path} {path}/ /404.html
-        file_server
-}
-EOF
+# Copia y da permisos
+COPY  . /app
+# RUN chown -R reflex:reflex /app
+# USER reflex
 
-# Copia el contenido de tu proyecto al contenedor
-COPY . .
-
-# Instala las dependencias de Python
+# Instala dependencias e inicializa Reflex
 RUN pip install --no-cache-dir -r requirements.txt
-
-# --- Este es el proceso de construcción de Reflex ---
-# Inicializa la app
+# RUN reflex db init
+# RUN reflex db makemigrations
+# RUN reflex db migrate
 RUN reflex init
 
-# Exporta el frontend (los archivos HTML, CSS, JS) y los mueve a donde Caddy pueda verlos
-RUN reflex export --frontend-only --no-zip && mv .web/_static/* /srv/ && rm -rf .web
+# Variables de entorno y puertos
+# ENV DATABASE_URL=${DATABASE_URL}
+ENV REFLEX_PORT=8000
+ENV PORT=3000
+EXPOSE 3000
+EXPOSE 8000
 
-# Expone el puerto que usará Render
-EXPOSE $PORT
+# Healthcheck para que Railway sepa que tu app está viva
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8000/api/health || exit 1
 
-# Comando para iniciar la aplicación en modo producción
-# Esto inicia Caddy (el servidor web) y luego el backend de Reflex
-CMD caddy start && reflex run --env prod --backend-only --loglevel debug
+STOPSIGNAL SIGKILL
+
+# ¡El comando final!
+CMD ["reflex", "run", "--env", "prod"]
