@@ -31,3 +31,8 @@
 .button:hover {
     background-color: aliceblue;
 }
+
+.mask_image {
+    mask-image: radial-gradient(circle, black 60%, transparent 90%);
+    /* border-radius: 100px; */
+}
