@@ -11,6 +11,10 @@ def dialogImage(image: str) -> rx.Component:
                 # height='150px',
                 height=rx.breakpoints(xs='150px', md='200px', xl='200px'),
                 border_radius='20px',
+                class_name='mask_image'
+    #             style={
+    #     "mask_image": "radial-gradient(circle, black 60%, transparent 90%)",
+    # }
                 
                 
             )
@@ -21,7 +25,8 @@ def dialogImage(image: str) -> rx.Component:
             ),
             rx.dialog.description(
                 rx.image(src=image, width='100%', max_width='100vw', height='auto'),
-                width='auto'
+                width='auto',
+                
             )
         )
     )
