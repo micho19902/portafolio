@@ -1,50 +1,52 @@
-FROM python:3.14.4
+FROM python:3.12-slim
+
+# Variable de entorno para el puerto que Render asigna
+ARG PORT=10000
+ENV PORT=$PORT
+ENV PYTHONUNBUFFERED=1
+
+# Instalar Caddy y Node.js
+RUN apt-get update -y && apt-get install -y caddy curl && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# ARG NODE_VERSION=20.x
-# ARG DATABASE_URL
+# Configuración de Caddy (el proxy inverso)
+RUN cat > Caddyfile <<EOF
+:${PORT}
 
-# # Instala Node.js (necesario para el frontend de Reflex)
-# RUN apt-get update && apt-get install -y \
-#     curl \
-#     gnupg \
-#     unzip \
-#     procps \
-#     && curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
-#     && apt-get install -y nodejs \
-#     && apt-get clean \
-#     && rm -rf /var/lib/apt/lists/*
+encode gzip
 
-# # Crea un usuario no root para seguridad
-# RUN adduser --disabled-password --home /app reflex
-# RUN python -m venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
+@backend_routes path /_event/* /ping /_upload/* /_upload
+handle @backend_routes {
+	reverse_proxy localhost:8000
+}
 
-# Copia y da permisos
-COPY  . /app
-# RUN chown -R reflex:reflex /app
-# USER reflex
+root * /srv
+route {
+	try_files {path} {path}/ /index.html
+	file_server
+}
+EOF
 
-# Instala dependencias e inicializa Reflex
+# Copiar y instalar dependencias
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-# RUN reflex db init
-# RUN reflex db makemigrations
-# RUN reflex db migrate
+
+COPY . .
+
+# Inicializar Reflex
 RUN reflex init
 
-# Variables de entorno y puertos
-# ENV DATABASE_URL=${DATABASE_URL}
-ENV REFLEX_PORT=8000
-ENV PORT=3000
-EXPOSE 3000
-EXPOSE 8000
+# Exportar frontend estático y moverlo donde Caddy lo encuentra
+RUN reflex export --frontend-only --no-zip && \
+    mkdir -p /srv && \
+    cp -r .web/_static/* /srv/ && \
+    rm -rf .web
 
-# Healthcheck para que Railway sepa que tu app está viva
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:8000/api/health || exit 1
+EXPOSE $PORT
 
-STOPSIGNAL SIGKILL
-
-# ¡El comando final!
-CMD ["reflex", "run", "--env", "prod"]
+# Comando de inicio: Caddy + backend de Reflex
+CMD caddy start && reflex run --env prod --backend-only --loglevel warn
