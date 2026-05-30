@@ -16,4 +16,4 @@ jobs:
           project_id: ${{ secrets.REFLEX_PROJECT_ID }}
           # app_directory: "portafolio" # Optional, defaults to root
           # extra_args: "--env THIRD_PARTY_APIKEY=***" # Optional
-          # python_version: "3.14.5" # Optional
+          python_version: "3.14.5" # Optional
