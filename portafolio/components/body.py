@@ -89,12 +89,16 @@ def body() -> rx.Component:
                     
             ),
             rx.heading(
-                ' - hyprland desktop',
+                'Hypr.land desktop - ',
                 size='4',
-                margin='20px',
+                margin='40px 0px 40px 0px',
+                align='right'
             
             ),
             rx.hstack(
+
+                dialogImage('hypr-desktop.png'),
+
                 rx.text(
                     '''Proyecto de escritorio basado en Hyprland, con una configuración minimalista y eficiente en GNU/Linux, 
                     orientado a productividad. Ambiente personalizable con atajos de teclado, gestión de ventanas en mosaico, 
@@ -103,7 +107,6 @@ def body() -> rx.Component:
                     width='500px',
                     height='auto'
                 ),
-                dialogImage('hypr-desktop.png')
             ),
             rx.heading(
                 'Certificados',
