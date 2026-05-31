@@ -5,7 +5,7 @@ def header() -> rx.Component:
     return rx.card(
         rx.hstack(
             rx.avatar(
-                src='https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/277170269_2734413586704647_6200820579857454140_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=y9pmdtozLnUQ7kNvwHt5Q74&_nc_oc=Ado3hREYP_aSzypiFHhSYzHEEehgjrTjYxoLGgnXQlRAiw7OT-oh7cxwW32AhEzQYKQ&_nc_zt=23&_nc_ht=scontent-mia3-2.xx&_nc_gid=mMjioq-FhNs9aGvRsPZDRQ&_nc_ss=7b2a8&oh=00_Af4rKClUnPr3EZHosLQ91Rs0d4TjDJ2s6RNSO33T7r-whw&oe=6A17FB94',
+                src='/277170269_2734413586704647_6200820579857454140_n.jpg',
                 size='9',
                 radius='full',
                 # border='2px solid red',
