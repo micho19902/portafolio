@@ -16,7 +16,7 @@ def header() -> rx.Component:
             rx.vstack(
                 rx.heading(
                     'Michel Guerrero Obrador',
-                            size=rx.breakpoints({'lg':'8', 'md':'5', 'xs':'3'})
+                            size=rx.breakpoints(initial='3')
                     # size=rx.breakpoints(xl='8',lg='8')
                     
                 ),
@@ -41,25 +41,32 @@ def header() -> rx.Component:
                         )
                     ),
                 rx.hstack(
-                    rx.link(
-                        rx.image(
-                            src='github-color-svgrepo-com.svg',
-                            height='40px',
-                            
+                    rx.grid(
+                        rx.link(
+                            rx.image(
+                                src='github-color-svgrepo-com.svg',
+                                height='40px',
+                                
+                            ),
+                            href='https://github.com/micho19902',
+                            is_external=True
                         ),
-                        href='https://github.com/micho19902',
-                        is_external=True
-                    ),
-                    rx.link(
-                        rx.image(
-                            src='reflex.jpg',
-                            height='40px',
-                            border_radius="20px",
-                            
+                        rx.link(
+                            rx.image(
+                                src='reflex.jpg',
+                                height='40px',
+                                border_radius="20px",
+                                
+                            ),
+                            href='https://reflex.dev/',
+                            is_external=True
                         ),
-                        href='https://reflex.dev/',
-                        is_external=True
+                        margin='5px 5px 25px 5px',
+                        spacing='2',
+                        columns=rx.breakpoints(initial='2', lg='4')
                     ),
+                ),
+                rx.grid(
                     rx.link(
                         rx.button(
                             rx.hstack(
@@ -72,15 +79,14 @@ def header() -> rx.Component:
                             ),
                             variant='surface',
                             border_radius='20px',
-                            # size='3'
-                            size=rx.breakpoints({'lg':'3', 'md':'3', 'xs':'2'}),
+                            size=rx.breakpoints(initial='1', lg='4'),
                             class_name='mail_to'
                             
                         ),
                         href='mailto:micho.1990@gmail.com',
                         
                     ),
-                     rx.link(
+                    rx.link(
                         rx.button(
                             rx.hstack(
                             rx.icon(
@@ -92,14 +98,16 @@ def header() -> rx.Component:
                             ),
                             variant='surface',
                             border_radius='20px',
-                            # size='3'
-                            size=rx.breakpoints({'lg':'3', 'md':'3', 'xs':'2'}),
+                            size=rx.breakpoints(initial='1', lg='4'),
                             class_name='mail_to',
                             on_click=rx.redirect('/CV Michel Guerrero Obrador.pdf', is_external=True)
                             
                         ),
                         
                     ),
+                    columns=rx.breakpoints(initial='1',sm='2', lg='2'),
+                    rows=rx.breakpoints(initial='1', lg='2'),
+                    
                     spacing='3',
                     align='center'
                 ),
@@ -109,11 +117,7 @@ def header() -> rx.Component:
             align='center'
             
         ),
-        # border='2px solid white',
-        # border_radius='10px',
         margin_bottom='20px',
-        # margin_botton='5px',
-        height=['auto','auto'],
-        # bg="#4D4848",
+        height=rx.breakpoints(initial='280px', lg='280px'),
         width=['auto','auto'],
     )

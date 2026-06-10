@@ -15,9 +15,5 @@ def footer() -> rx.Component:
 
             align='center',
             justify='center',
-            bg='#292825',
-            border_radius='10px',
-            height='40px'
         ),
-       
     )

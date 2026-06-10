@@ -33,6 +33,8 @@ def index() -> rx.Component:
 
 
 app = rx.App(stylesheets=['./style/styles.css'],
-            #  style={breakpoint: ["520px", "768px", "1024px", "1280px", "1640px"]}
+            theme=rx.theme(
+            appearance='dark'
+            )
             )
 app.add_page(index, title='< Micho / Devops >')

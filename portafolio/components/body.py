@@ -54,7 +54,6 @@ def body() -> rx.Component:
                 
 
             justify='between',
-            # columns='4',
             columns=rx.breakpoints(initial="2", sm="3", lg="4"),
             spacing='2'  
 
@@ -69,7 +68,6 @@ def body() -> rx.Component:
                 ' - appNotes',
                 size='4',
                 margin='20px',
-                # class_name='tecn_hoover'
             
             ),
             rx.hstack(
@@ -84,9 +82,9 @@ def body() -> rx.Component:
                     height='auto'
                 ),
                 
-                
+                rx.tablet_and_desktop(
                 dialogImage('appnotes.png')
-                    
+                ),
             ),
             rx.heading(
                 'Hypr.land desktop - ',
@@ -96,9 +94,9 @@ def body() -> rx.Component:
             
             ),
             rx.hstack(
-
+                rx.tablet_and_desktop(
                 dialogImage('hypr-desktop.png'),
-
+                ),
                 rx.text(
                     '''Proyecto de escritorio basado en Hyprland, con una configuración minimalista y eficiente en GNU/Linux, 
                     orientado a productividad. Ambiente personalizable con atajos de teclado, gestión de ventanas en mosaico, 
@@ -108,6 +106,28 @@ def body() -> rx.Component:
                     height='auto'
                 ),
             ),
+            rx.heading(
+                ' - NS. Estudio',
+                size='4',
+                margin='40px 0px 40px 0px',
+            
+            ),
+            rx.hstack(
+                
+                rx.text(
+                    '''Web creada com el objetivo de crear un portafolio virtual a una empresa de Proyectos de paisajismo y arquitectura.
+                    Creada sobre la base de REFLEX/Python y estilizada con CSS.
+                    Alojada sobre los servidores de Deploy propios de REFLEX Cloud''',
+                    width='500px',
+                    height='auto'
+                ),
+                
+                rx.tablet_and_desktop(
+                dialogImage('appnotes.png')
+                ),
+                
+            ),
+            
             rx.heading(
                 'Certificados',
                 margin='60px 0px 20px 0px',
@@ -119,7 +139,6 @@ def body() -> rx.Component:
         
         margin='4px',
         height='auto',
-        border_radius='10px',
-        # spacing='2px'
+        # border_radius='10px',
 
         ),

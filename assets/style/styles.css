@@ -3,26 +3,20 @@
 }
 
 .cardCert {
-    /* background-color: gray; */
-    /* color: blue; */
     margin-bottom: 5px;
     border-radius: 10px;
     border-color: aqua;
-    /* border: 1px solid aqua; */
 }
 
 .cardCert:hover {
     background-color: aquamarine;
     color: black;
-    font-size: large;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     font-weight: bold;
-    /* height: 80px; */
+    transform: scale(1.01);
 }
 
 
 .button {
-    /* background-color: aliceblue; */
     border-radius: 15px;
     width: 100px;
     
@@ -34,5 +28,4 @@
 
 .mask_image {
     mask-image: radial-gradient(circle, black 60%, transparent 90%);
-    /* border-radius: 100px; */
 }
