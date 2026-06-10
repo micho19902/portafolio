@@ -73,13 +73,12 @@ def body() -> rx.Component:
             rx.hstack(
                 
                 rx.text(
-                    '''Proyecto de prueba realizado en el camino de aprendizaje de Reflex de Python, 
-                    proyecto pensado para llevar un registro de notas almacenadas con fecha, 
-                    permite la insercion de nuevas notas, eliminacion y asignacion de un nivel de prioridad en identificadas por color.
-                    Este se desplego en produccion en Railway y se lleva control de versiones en GitHUB, las notas son guardadas en una base
-                    de datos PostgreSQL, en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
+                    '''Proyecto de prueba realizado en el camino de aprendizaje de Reflex de Python, proyecto pensado para llevar un registro de notas almacenadas con fecha, permite la insercion de nuevas notas, eliminacion y asignacion de un nivel de prioridad en identificadas por color.
+Este se desplego en produccion en Railway y se lleva control de versiones en GitHUB, las notas son guardadas en una base
+de datos PostgreSQL, en proceso de implementar una autenticacion(Ya disponible registro de usuarios)''',
                     width='500px',
-                    height='auto'
+                    height='auto',
+                    style={"white_space": "pre-wrap"}
                 ),
                 
                 rx.tablet_and_desktop(
@@ -98,12 +97,11 @@ def body() -> rx.Component:
                 dialogImage('hypr-desktop.png'),
                 ),
                 rx.text(
-                    '''Proyecto de escritorio basado en Hyprland, con una configuración minimalista y eficiente en GNU/Linux, 
-                    orientado a productividad. Ambiente personalizable con atajos de teclado, gestión de ventanas en mosaico, 
-                    transparencias sutiles y esquemas de color coherentes. Incluye paneles ligeros, indicadores de sistema, 
-                    docks ocultos y una experiencia fluida para desarrollo, navegación y multimedia, manteniendo el sistema rápido y estable.''',
+                    '''Proyecto de escritorio basado en Hyprland, con una configuración minimalista y eficiente en GNU/Linux, orientado a productividad. Ambiente personalizable con atajos de teclado, gestión de ventanas en mosaico, transparencias sutiles y esquemas de color coherentes. 
+Incluye paneles ligeros, indicadores de sistema, docks ocultos y una experiencia fluida para desarrollo, navegación y multimedia, manteniendo el sistema rápido y estable.''',
                     width='500px',
-                    height='auto'
+                    height='auto',
+                    style={"white_space": "pre-wrap"}
                 ),
             ),
             rx.heading(
@@ -116,14 +114,16 @@ def body() -> rx.Component:
                 
                 rx.text(
                     '''Web creada com el objetivo de crear un portafolio virtual a una empresa de Proyectos de paisajismo y arquitectura.
-                    Creada sobre la base de REFLEX/Python y estilizada con CSS.
-                    Alojada sobre los servidores de Deploy propios de REFLEX Cloud''',
+Creada sobre la base de REFLEX/Python y estilizada con CSS.
+Alojada sobre los servidores de Deploy propios de REFLEX Cloud
+https://nsstudio-silver-moon.reflex.run/''',
                     width='500px',
-                    height='auto'
+                    height='auto',
+                    style={"white_space": "pre-wrap"}
                 ),
                 
                 rx.tablet_and_desktop(
-                dialogImage('appnotes.png')
+                dialogImage('Gemini_Generated_Image_4n9faa4n9faa4n9f.png')
                 ),
                 
             ),
