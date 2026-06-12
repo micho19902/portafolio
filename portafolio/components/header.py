@@ -5,10 +5,9 @@ def header() -> rx.Component:
     return rx.card(
         rx.hstack(
             rx.avatar(
-                src='/277170269_2734413586704647_6200820579857454140_n.jpg',
+                src='277170269_2734413586704647_6200820579857454140_n.jpg',
                 size='9',
                 radius='full',
-                # border='2px solid red',
                 fallback='MG',
                 class_name='mask_image'
 
@@ -16,8 +15,7 @@ def header() -> rx.Component:
             rx.vstack(
                 rx.heading(
                     'Michel Guerrero Obrador',
-                            size=rx.breakpoints(initial='3')
-                    # size=rx.breakpoints(xl='8',lg='8')
+                            size=rx.breakpoints(initial='3', lg='8')
                     
                 ),
                 rx.tablet_and_desktop(
@@ -61,7 +59,7 @@ def header() -> rx.Component:
                             href='https://reflex.dev/',
                             is_external=True
                         ),
-                        margin='5px 5px 25px 5px',
+                        margin='5px 5px 15px 5px',
                         spacing='2',
                         columns=rx.breakpoints(initial='2', lg='4')
                     ),
@@ -106,7 +104,7 @@ def header() -> rx.Component:
                         
                     ),
                     columns=rx.breakpoints(initial='1',sm='2', lg='2'),
-                    rows=rx.breakpoints(initial='1', lg='2'),
+                    rows=rx.breakpoints(initial='1', sm='2', lg='2'),
                     
                     spacing='3',
                     align='center'
@@ -114,10 +112,11 @@ def header() -> rx.Component:
                 spacing='1',
                 padding='5px'
             ),
-            align='center'
+            align='center',
+            justify='center'
             
         ),
         margin_bottom='20px',
-        height=rx.breakpoints(initial='280px', lg='280px'),
+        height=rx.breakpoints(initial='280px', lg='300px'),
         width=['auto','auto'],
     )
