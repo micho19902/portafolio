@@ -1,5 +1,6 @@
 .mail_to:hover {
     background-color: aliceblue;
+    color: black;
 }
 
 .cardCert {
@@ -23,7 +24,9 @@
 }
 
 .button:hover {
+    transform: scale(1.05);
     background-color: aliceblue;
+    color: black;
 }
 
 .mask_image {
