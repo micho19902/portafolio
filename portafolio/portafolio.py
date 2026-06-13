@@ -4,6 +4,7 @@ from .components.body import body
 from .components.footer import footer
 from .components.navbar import navbar
 from .components.aboutMy import aboutMy
+from .components.menu import menu
 import reflex as rx
 
 from rxconfig import config
@@ -38,3 +39,4 @@ app = rx.App(stylesheets=['./style/styles.css'],
             )
             )
 app.add_page(index, title='< Micho / Devops >')
+app.add_page(menu, route='/prueba')
