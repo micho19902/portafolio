@@ -144,7 +144,7 @@ def menu() -> rx.Component:
     height='300px'
 ),
         rx.color_mode.switch(),
-        # login_default()
+        login_default()
     ))
     
     
