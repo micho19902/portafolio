@@ -1,6 +1,33 @@
+.mail_to {
+    position: relative;
+    display: inline-block;  /* O block, según necesites */
+    /* background-color: transparent; */
+    overflow: hidden;
+    z-index: 0;
+    transition: color 0.3s ease;
+}
+
+.mail_to::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;  /* color de relleno */
+    transform: scaleX(0);
+    transform-origin: left;       /* desde la izquierda */
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+
+.mail_to:hover::before {
+    transform: scaleX(1);
+}
+
 .mail_to:hover {
-    background-color: aliceblue;
-    color: black;
+    color: black;  /* texto oscuro sobre fondo claro */
+    box-shadow: 0 0 20px #326be7;
 }
 
 .cardCert {
